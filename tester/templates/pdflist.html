@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Templates</title>
+    <style>
+        * {
+  box-sizing: border-box;
+}
+.container{
+  width: 100%;
+  height: 100%;
+  padding: 8px;
+}
+/* Create three columns of equal width */
+.columns {
+  float: left;
+  width: 33.3%;
+  padding: 8px;
+}
+
+/* Style the list */
+.price {
+  list-style-type: none;
+  border: 1px solid #eee;
+  margin: 0;
+  padding: 0;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+/* Add shadows on hover */
+.price:hover {
+  box-shadow: 0 8px 12px 0 rgba(0,0,0,0.2)
+}
+
+/* Pricing header */
+.price .header {
+  background-color: #111;
+  color: white;
+  font-size: 25px;
+}
+
+/* List items */
+.price li {
+  border-bottom: 1px solid #eee;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Grey list item */
+.price .grey {
+  background-color: #eee;
+  font-size: 20px;
+}
+
+/* The "Sign Up" button */
+.button {
+  background-color: #04AA6D;
+  border: none;
+  color: white;
+  padding: 10px 25px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+/* Change the width of the three columns to 100%
+(to stack horizontally on small screens) */
+@media only screen and (max-width: 600px) {
+  .columns {
+    width: 100%;
+  }
+}
+    </style>
+</head>
+<body>
+  <div class="container">
+    <div class="columns">
+        <ul class="price">
+          <li ><img src="https://jofibo.com/images/frontpage/elegant_resume_template_fan.png" style="width: 100%;" alt=""></li>
+          <li class="grey"><a href="template1/" id="1" class="button">Use this</a></li>
+        </ul>
+    </div>
+    <div class="columns">
+      <ul class="price">
+        <li ><img src="https://resumegenius.com/wp-content/uploads/Minimalist-Professional-Resume-Skin-Blue.png" style="width: 100%;" alt=""></li>
+        <li class="grey"><a href="template2/" id="2" class="button">Use this</a></li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

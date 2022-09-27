@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{profile.name}}_{{profile.lname}}_RESUME</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+  <div>
+    <div>
+      <img src="media/{{profile.profileimg}}" height="150px" width="100px"  alt=""><br>
+      <div class="main-name" style="font-size: 30px; font-weight: bold;">{{profile.name}} {{profile.lname}}</div>
+      <div class="degreein" style="padding-top: 1px;">{{profile.stream}}</div>
+    </div>
+    <div class="P">
+      <div class="address">{{profile.address1}}</div>
+      <div class="address">{{profile.address2}}</div>
+      <div class="address">{{profile.city}}</div>
+      <div class="address">{{profile.state}}</div>
+      <div class="address">{{profile.zip}}</div>
+      <div>{{profile.phone}} <br> {{profile.email}}</div>
+    </div>
+    <hr>
+    <div>
+      <div class="H">About</div>
+      <div class="P">{{profile.about}}</div>
+    </div>
+    <div class="edu">
+      <div class="H">Education</div>
+      <div class="P">{{profile.schoolclass}}</div>
+      <div class="P">{{profile.school}}</div>
+      <div class="P">{{profile.schooly1}} - {{profile.schooly2}}</div>
+      <br>
+      <div class="P">{{profile.degreein}}</div>
+      <div class="P">{{profile.stream}}</div>
+      <div class="P">{{profile.degree}}</div>
+      <div class="P">{{profile.university}}</div>
+      <div class="P">{{profile.collegey1}} - {{profile.collegey2}}</div>
+    </div>
+    <div class="skill">
+      <div class="H">skills</div>
+      <div class="P">{{profile.skill}}</div>
+    </div>
+
+  </div>
+</body>
+<style>
+
+  .H{
+    text-decoration: underline black;
+    font-size: 23px;
+  }
+  .P{
+    font-size: 15px;
+  }
+  .degreein{
+    font-size: 15px;
+  }
+</style>
+</html>
+<!--Resume 1-->
