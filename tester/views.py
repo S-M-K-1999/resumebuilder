@@ -1,5 +1,6 @@
 
 from importlib.resources import path
+from urllib import response
 from django.views.generic import ListView
 from django.shortcuts import render
 import os
@@ -69,7 +70,7 @@ def pdflist(request,*args, **kwargs):
     return render(request, 'pdflist.html')
 
 
-
+from io import BytesIO
 #render view template 1
 def render_view_download1(request, *args, **kwargs):
     pk = kwargs.get('pk')
@@ -95,22 +96,11 @@ def render_view_download1(request, *args, **kwargs):
 def render_pdf_view1(request, *args, **kwargs):
     pk = kwargs.get('pk')
     user_profile=Profile.objects.get(pk = pk)
+
     filename = user_profile.name
     template_path = 'resume.html'
     context = {'profile': user_profile}
-    # Create a Django response object, and specify content_type as pdf
-    response = HttpResponse(content_type='application/pdf')
-    #response['Content-Disposition'] = 'attachment; filename="report.pdf"'
-    response['Content-Disposition'] = 'filename="{}_RESUME.pdf"'.format(filename.upper())
-    # find the template and render it.
-    template = get_template(template_path)
-    html = template.render(context)
-    # create a pdf
-    pisa_status = pisa.CreatePDF(html, dest=response)
-    # if error then show some funny view
-    if pisa_status.err:
-        return HttpResponse('We had some errors <pre>' + html + '</pre>')
-    return response
+    return render(request, template_path, context)
 
 #render view template 2
 def render_view_download2(request, *args, **kwargs):
