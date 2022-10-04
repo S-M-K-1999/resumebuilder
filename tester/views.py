@@ -1,11 +1,11 @@
-
+from django.urls import reverse
 from importlib.resources import path
 from urllib import response
 from django.views.generic import ListView
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 import os
 from django.conf import settings
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseRedirect
 from django.template.loader import get_template
 from .models import Profile
 from xhtml2pdf import pisa
@@ -47,10 +47,24 @@ def dashboard(request):
             degreein=request.POST['degreein']
             collegey1=request.POST['collegey1']
             collegey2=request.POST['collegey2']
+            #projects
+            projectheading = request.POST['projectheading']
+            project_dis = request.POST['project_dis']
+            #experience
+            ex1pos = request.POST['ex1pos']
+            ex1com = request.POST['ex1com']
+            ex1years = request.POST['ex1years']
+
+            ex2pos = request.POST['ex2pos']
+            ex2com = request.POST['ex2com']
+            ex2years = request.POST['ex2years']
+
             #about
             designation=request.POST['designation']
             about=request.POST['about']
             skill=request.POST['skill']
+            interest = request.POST['interest']
+
             profile = Profile(
                 #basic
                 profileimg=profileimg,name=name,lname=lname,phone=phone,email=email,
@@ -59,12 +73,19 @@ def dashboard(request):
                 #education
                 school=school,schoolclass=schoolclass,schooly1=schooly1,schooly2=schooly2,
                 degree=degree,stream=stream,university=university,degreein=degreein,collegey1=collegey1,collegey2=collegey2,
+                #projects
+                projectheading=projectheading,project_dis=project_dis,
+                #experience
+                ex1pos=ex1pos,ex1com=ex1com,ex1years=ex1years,ex2pos=ex2pos,ex2com=ex2com,ex2years=ex2years,
                 #about
-                designation=designation,about=about,skill=skill
+                designation=designation,about=about,skill=skill,interest=interest
                 )
             profile.save()
-        return render(request, 'accept.html')
-
+            return HttpResponseRedirect('/pdflist')
+        return render(request, 'progress.html')
+        
+def landingpage(request):
+    return render(request, 'landing.html')
 
 def pdflist(request,*args, **kwargs):
     return render(request, 'pdflist.html')
@@ -127,19 +148,8 @@ def render_view_download2(request, *args, **kwargs):
 def render_pdf_view2(request, *args, **kwargs):
     pk = kwargs.get('pk')
     user_profile=Profile.objects.get(pk = pk)
+
     filename = user_profile.name
     template_path = 'resume2.html'
     context = {'profile': user_profile}
-    # Create a Django response object, and specify content_type as pdf
-    response = HttpResponse(content_type='application/pdf')
-    #response['Content-Disposition'] = 'attachment; filename="report.pdf"'
-    response['Content-Disposition'] = 'filename="{}_RESUME.pdf"'.format(filename.upper())
-    # find the template and render it.
-    template = get_template(template_path)
-    html = template.render(context)
-    # create a pdf
-    pisa_status = pisa.CreatePDF(html, dest=response)
-    # if error then show some funny view
-    if pisa_status.err:
-        return HttpResponse('We had some errors <pre>' + html + '</pre>')
-    return response
+    return render(request, template_path, context)

@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <title>Registraion Form</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&family=Roboto+Slab&family=Russo+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+  <body>
+    <form method="POST" action="" class="form" enctype="multipart/form-data">
+        {% csrf_token %}
+      <h1 class="text-center">Resume Builder Form</h1>
+      <!-- Progress bar -->
+      <div class="progressbar">
+        <div class="progress" id="progress"></div>
+        
+        <div
+          class="progress-step progress-step-active"
+          data-title="Profile-Picture"
+        ></div>
+        <div class="progress-step" data-title="basic-details"></div>
+        <div class="progress-step" data-title="Address"></div>
+        <div class="progress-step" data-title="Education"></div>
+        <div class="progress-step" data-title="Projects"></div>
+        <div class="progress-step" data-title="experience"></div>
+        <div class="progress-step" data-title="About"></div>
+      </div>
+
+      <!-- Steps -->
+      <div class="form-step form-step-active">
+        <div class="input-group">
+          <label class="Profile-Picture" for="Profile-Picture">Profile Picture</label>
+          <input type="file" class="form-control-file" name="profileimg">
+        </div>
+        
+        <div class="">
+          <a href="#"  class="btn btn-next width-50 ml-auto">Next</a>
+        </div>
+      </div>
+      <div class="form-step">
+        <div class="input-group">
+            <div class="col-12">
+            <label for="name">Name</label>
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <input type="text" name="name" class="form-control" placeholder="First name">
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" name="lname" class="form-control" placeholder="Last name">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="input-group">
+            <div class="col-12">
+            <label for="phone">Phone</label>
+            <input type="tel" name="phone" class="form-control" style="width: 100%;"  placeholder="Enter phone" required>
+        </div>
+    </div>
+        <div class="input-group">
+            <div class="col-12">
+            <label for="exampleInputEmail1">Email</label>
+            <input type="email" name="email" class="form-control"  placeholder="Enter email" required>
+        </div>
+    </div>
+        <div class="btns-group" >
+            <a href="#" class="btn btn-prev">Previous</a>
+            <a href="#"  class="btn btn-next width-50 ml-auto">Next</a>
+        </div>
+    </div>
+    <div class="form-step">
+        <div class="input-group">
+            <div class="col-12">
+            <label for="inputAddress">Address</label>
+            <input type="text" name="address1" class="form-control" id="inputAddress" placeholder="1234 Main St" required>
+        </div></div>
+        <div class="input-group">
+            <div class="col-12">
+            <label for="inputAddress2">Address 2</label>
+            <input type="text" name="address2" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+        </div></div>
+        <div class="input-group">
+            <div class="col-12">
+            <label for="inputCity">City</label>
+            <input type="text" name="city" class="form-control" id="inputCity" required>
+        </div></div>
+        <div class="input-group">
+            <div class="col-12">
+            <label for="inputState">State</label>
+            <input type="text" name="state" class="form-control" required>
+        </div></div>
+        <div class="input-group">
+            <div class="col-12">
+            <label for="inputZip">Zip</label>
+            <input type="text" name="zip" class="form-control" id="inputZip" required>
+        </div></div>
+        <div class="btns-group">
+          <a href="#" class="btn btn-prev">Previous</a>
+          <a href="#" class="btn btn-next width-50 ml-auto">Next</a>
+        </div>
+      </div>
+
+
+      <!--education-->
+      <div class="form-step">
+        <div class="form-group">
+            <label for="school">school</label>
+            <input type="text" name="school" class="form-control"  placeholder="Enter school Name" required><br>
+            <select class="form-control" name="schoolclass">
+                <option value="" selected>Choose</option>
+                <option>10th</option>
+                <option>12th</option>
+            </select>
+            <label for="schooly">Year</label>
+            <div class="form-row">
+                <div class="form-group col-md-2">
+                    <input name="schooly1" class="date-own form-control" type="text" class="form-control" id="inputZip" required>
+                </div><h4>-</h4>
+                
+                <div class="form-group col-md-2">
+                    <input name="schooly2" class="date-own form-control" type="text" class="form-control" id="inputZip" required>
+                </div>
+            </div>
+        </div><br>
+        <div class="form-group">
+            <label for="degree">College</label>
+            <input type="text" name="degree"  class="form-control" placeholder="Enter College Name" required><br>
+            <label for="stream">Stream</label>
+            <input type="text" name="stream" class="form-control" placeholder="Enter your stram" required><br>
+            <label for="university">university</label>
+            <input type="text" name="university" class="form-control" placeholder="Enter University" required><br>
+            <label for="degreein">degree in</label>
+            <select class="form-control" name="degreein">
+                <option value="" selected>Choose</option>
+                <option>BE</option>
+                <option>BTech</option>
+            </select><br>
+            <label for="collegey">Year</label>
+            <div class="form-row">
+                <div class="form-group col-md-2">
+                    <input name="collegey1" class="date-own form-control" type="text" class="form-control" id="inputZip" required>
+                </div>
+                <h4>-</h4>
+                <div class="form-group col-md-2">
+                    <input name="collegey2" class="date-own form-control" type="text" class="form-control" id="inputZip" required>
+                </div>
+            </div>
+        </div>
+        <div class="btns-group" >
+          <a href="#" class="btn btn-prev">Previous</a>
+          <a href="#"  class="btn btn-next width-50 ml-auto">Next</a>
+        </div>
+        
+      </div>
+      
+
+      <div class="form-step">
+        <div class="form-group">
+            <label for="project">Project</label>
+            <input type="text" name="projectheading" class="form-control"  placeholder="Enter Project Heading" required>
+            <label for="projectdis">Discribtion</label>
+            <input type="text" name="project_dis" class="form-control"  placeholder="Enter Discribtion" required>
+        </div>
+        <div class="btns-group" >
+          <a href="#" class="btn btn-prev">Previous</a>
+          <a href="#"  class="btn btn-next width-50 ml-auto">Next</a>
+        </div>
+      </div>
+
+
+      <div class="form-step">
+        <h6 style="font-family: 'Roboto Mono', monospace;"> Experience 1</h6>
+                    <div class="form-group">
+                        <label for="pos1">Position</label>
+                        <input type="text" name="ex1pos" class="form-control"  placeholder="Enter position" >
+                        <label for="pos1">Company</label>
+                        <input type="text" name="ex1com" class="form-control"  placeholder="Company Name" >
+                        <label for="pos1">Experience</label>
+                        <input type="number" name="ex1years" class="form-control"  placeholder="In years" >
+                    </div>
+                    <h6 style="font-family: 'Roboto Mono', monospace;"> Experience 2</h6>
+                    <div class="form-group">
+                        <label for="pos1">Position</label>
+                        <input type="text" name="ex2pos" class="form-control"  placeholder="Enter position" >
+                        <label for="pos1">Company</label>
+                        <input type="text" name="ex2com" class="form-control"  placeholder="Company Name" >
+                        <label for="pos1">Experience</label>
+                        <input type="number" name="ex2years" class="form-control"  placeholder="In years" >
+                    </div>
+        <div class="btns-group" >
+          <a href="#" class="btn btn-prev">Previous</a>
+          <a href="#"  class="btn btn-next width-50 ml-auto">Next</a>
+        </div>
+      </div>
+
+
+      
+
+
+      <div class="form-step">
+        <div class="form-group">
+            <label for="designation">Designation</label>
+            <input type="text" name="designation" class="form-control"  placeholder="Enter Destination" required>
+        </div>
+        <div class="form-group">
+            <label for="about">About You</label>
+            <input type="text" name="about" class="form-control"  placeholder="About You" required>
+        </div>
+        <div class="form-group">
+            <label for="skill">skill</label>
+            <input type="text" name="skill" class="form-control" placeholder="Enter skill" required>
+        </div>
+        <div class="form-group">
+            <label for="interest">Interest</label>
+            <input type="text" name="interest" class="form-control" placeholder="Enter your interests" required>
+        </div>
+        
+        <div class="btns-group">
+          <a href="#" class="btn btn-prev">Previous</a>
+          <input type="submit" value="Submit" class="btn btn-next width-50 ml-auto" />
+        </div>
+      </div>
+    </form>
+  </body>
+  <script>
+    const prevBtns = document.querySelectorAll(".btn-prev");
+const nextBtns = document.querySelectorAll(".btn-next");
+const progress = document.getElementById("progress");
+const formSteps = document.querySelectorAll(".form-step");
+const progressSteps = document.querySelectorAll(".progress-step");
+
+let formStepsNum = 0;
+
+nextBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    formStepsNum++;
+    updateFormSteps();
+    updateProgressbar();
+  });
+});
+
+prevBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    formStepsNum--;
+    updateFormSteps();
+    updateProgressbar();
+  });
+});
+
+function updateFormSteps() {
+  formSteps.forEach((formStep) => {
+    formStep.classList.contains("form-step-active") &&
+      formStep.classList.remove("form-step-active");
+  });
+
+  formSteps[formStepsNum].classList.add("form-step-active");
+}
+
+function updateProgressbar() {
+  progressSteps.forEach((progressStep, idx) => {
+    if (idx < formStepsNum + 1) {
+      progressStep.classList.add("progress-step-active");
+    } else {
+      progressStep.classList.remove("progress-step-active");
+    }
+  });
+
+  const progressActive = document.querySelectorAll(".progress-step-active");
+
+  progress.style.width =
+    ((progressActive.length - 1) / (progressSteps.length - 1)) * 100 + "%";
+}
+$('.date-own').datepicker({
+        minViewMode: 2,
+        format: 'yyyy'
+    });
+  </script>
+  <style>
+    :root {
+  --primary-color: rgb(11, 78, 179);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Montserrat, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+    
+
+}
+/* Global Stylings */
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+input {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+}
+
+.width-50 {
+  width: 50%;
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Progressbar */
+.progressbar {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  counter-reset: step;
+  margin: 2rem 0 4rem;
+}
+
+.progressbar::before,
+.progress {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 4px;
+  width: 100%;
+  background-color: #dcdcdc;
+  z-index: -1;
+}
+
+.progress {
+  background-color: var(--primary-color);
+  width: 0%;
+  transition: 0.3s;
+}
+
+.progress-step {
+  width: 2.1875rem;
+  height: 2.1875rem;
+  background-color: #dcdcdc;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.progress-step::before {
+  counter-increment: step;
+  content: counter(step);
+}
+
+.progress-step::after {
+  content: attr(data-title);
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.progress-step-active {
+  background-color: var(--primary-color);
+  color: #f3f3f3;
+}
+
+/* Form */
+.form {
+  width: 1000px;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  border-radius: 0.35rem;
+  padding: 1.5rem;
+  height: auto;
+}
+
+.form-step {
+  display: none;
+  transform-origin: top;
+  animation: animate 0.5s;
+}
+
+.form-step-active {
+  display: block;
+}
+
+.input-group {
+  margin: 2rem 0;
+}
+
+@keyframes animate {
+  from {
+    transform: scale(1, 0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1, 1);
+    opacity: 1;
+  }
+}
+
+/* Button */
+.btns-group {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  
+}
+
+.btn {
+  padding: 0.75rem;
+  display: block;
+  text-decoration: none;
+  background-color: var(--primary-color);
+  color: #f3f3f3;
+  text-align: center;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: 0.3s;
+  width: 200px;
+  
+}
+.btn:hover {
+  box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--primary-color);
+}
+  </style>
+</html>

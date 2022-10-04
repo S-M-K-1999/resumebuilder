@@ -39,13 +39,11 @@
                 <br>
                 <hr>
                 <div class="row">
-                    <div class="col-8" >
+                    <div class="col-11" >
                         {{profile}}
                     </div>
-                    <div class="col-2">
-                        <a href="{% url 'profile:render_view_download1' profile.pk %}" class="btn btn-primary">Download cv</a>
-                    </div>
-                    <div class="col-2">
+
+                    <div class="col-1">
                         <a href="{% url 'profile:render_pdf_view1' profile.pk %}" class="btn btn-primary">Show cv</a>
                     </div>
                     
